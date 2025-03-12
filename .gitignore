@@ -9,8 +9,16 @@
 !.yarn/versions
 npm-debug.log
 node_modules
+# Don't ignore specific JS files that need to be in the repo
 *.js
+!.eslintrc.js
+!.prettierrc.js
+!webpack.config.js
+!babel.config.js
 *.map
 dist/
 dist_tests/
 yarn-error.log
+
+# Include the pack file for direct installation
+!*.tgz

@@ -14,3 +14,8 @@ CONTRIBUTING.md
 .editorconfig
 package-lock.json
 yarn.lock
+
+# Make sure we don't exclude the compiled files
+!dist/
+!dist/**/*.js
+!dist/**/*.d.ts
