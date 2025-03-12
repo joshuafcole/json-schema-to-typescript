@@ -109,6 +109,26 @@ rules.set('Escape closing JSDoc comment', schema => {
   escapeBlockComment(schema)
 })
 
+rules.set('Add JSDoc comments for string patterns', schema => {
+  if (!hasType(schema, 'string')) {
+    return
+  }
+  if ('pattern' in schema) schema.description = appendToDescription(schema.description, `@pattern ${schema.pattern}`)
+})
+
+rules.set('Add JSDoc comments for numeric minimum and maximum', (schema, _fileName, options) => {
+  if (!hasType(schema, 'number') && !hasType(schema, 'integer')) {
+    return
+  }
+  const commentsToAppend = [
+    'minimum' in schema && options.ignoreMinAndMax ? `@minimum ${schema.minItems}` : '',
+    'maximum' in schema && options.ignoreMinAndMax ? `@maximum ${schema.maxItems}` : '',
+  ].filter(Boolean)
+  if (commentsToAppend.length) {
+    schema.description = appendToDescription(schema.description, ...commentsToAppend)
+  }
+})
+
 rules.set('Add JSDoc comments for minItems and maxItems', schema => {
   if (!isArrayType(schema)) {
     return

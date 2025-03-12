@@ -19,6 +19,8 @@ main(
       'declareExternallyReferenced',
       'enableConstEnums',
       'format',
+      'ignorePattern',
+      'ignoreMinAndMax',
       'ignoreMinAndMaxItems',
       'strictIndexSignatures',
       'unknownAny',

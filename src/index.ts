@@ -57,6 +57,14 @@ export interface Options {
    */
   format: boolean
   /**
+   * Ignore pattern for `string` types, preventing JSDoc annotation.
+   */
+  ignorePattern: boolean
+  /**
+   * Ignore maximum and minimum for `number` types, preventing JSDoc annotation.
+   */
+  ignoreMinAndMax: boolean
+  /**
    * Ignore maxItems and minItems for `array` types, preventing tuples being generated.
    */
   ignoreMinAndMaxItems: boolean
@@ -101,6 +109,8 @@ export const DEFAULT_OPTIONS: Options = {
   enableConstEnums: true,
   inferStringEnumKeysFromValues: false,
   format: true,
+  ignorePattern: false,
+  ignoreMinAndMax: false,
   ignoreMinAndMaxItems: false,
   maxItems: 20,
   strictIndexSignatures: false,
